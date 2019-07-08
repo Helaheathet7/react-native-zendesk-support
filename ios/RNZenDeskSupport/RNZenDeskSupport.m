@@ -148,7 +148,12 @@ RCT_EXPORT_METHOD(createRequestProvider) {
     RequestProvider = [ZDKRequestProvider new];
 }
 
-RCT_EXPORT_METHOD(createRequest:(NSString *)text :(NSString *)subject :(RCTResponseSenderBlock)callback) {
+RCT_REMAP_METHOD(createRequest,
+                  paramArticle:(NSString *)text
+                  subject:(NSString *)subject
+                 articleResolver:(RCTPromiseResolveBlock)resolve
+                 articleRejecter:(RCTPromiseRejectBlock)reject)
+{
     ZDKCreateRequest *ticket = [[ZDKCreateRequest alloc] init];
     [ticket setSubject:subject];
     [ticket setRequestDescription:text];
@@ -156,66 +161,29 @@ RCT_EXPORT_METHOD(createRequest:(NSString *)text :(NSString *)subject :(RCTRespo
     [ticket setTags:tags];
     
     [RequestProvider createRequest:ticket withCallback:^(id result, NSError *error) {
-        callback(@[[NSNull null]]);
+        resolve(@[[NSNull null]]);
     }];
 }
 
-RCT_EXPORT_METHOD(getUsersTickets:(RCTResponseSenderBlock)callback) {
-    [RequestProvider getAllRequestsWithCallback:^(ZDKRequestsWithCommentingAgents *requestsWithCommentingAgents, NSError *error) {
-        NSMutableArray *tickets = [[NSMutableArray alloc] init];
-        NSArray *requests = [requestsWithCommentingAgents requests];
-        for (int i = 0; i < [requests count]; i++)
-        {
-            NSMutableArray *ticket = [[NSMutableArray alloc] init];
-            ticket[0] = [[requests objectAtIndex:i] requestId];
-            ticket[1] = [[requests objectAtIndex:i] subject];
-            ticket[2] = [[[requests objectAtIndex:i] lastComment] body];
-            ticket[3] = [[requests objectAtIndex:i] requesterId];
-            NSNull *nullValue = [NSNull new];
-            ticket[4] = nullValue;
-            if([[[requests objectAtIndex:i] commentingAgentsIds] count] != 0) {
-                ticket[4] = @"Team Suitable";
-            }
-            ticket[5] = dateToString([[requests objectAtIndex:i] createdAt]);
-            tickets[i] = ticket;
-        }
-        callback(@[[NSNull null], tickets]);
-    }];
-}
-
-RCT_EXPORT_METHOD(getTicketComments:(NSString *)id :(RCTResponseSenderBlock)callback) {
-    [RequestProvider getCommentsWithRequestId:id withCallback:^(NSArray<ZDKCommentWithUser *> *commentsWithUsers, NSError *error) {
-        NSMutableArray *comments = [[NSMutableArray alloc] init];
-        NSInteger count = [commentsWithUsers count];
-        for(int i = 0; i < count; i++) {
-            NSMutableArray *comment = [[NSMutableArray alloc] init];
-            ZDKCommentWithUser *commentInfo = [commentsWithUsers objectAtIndex:i];
-            comment[0] = [[commentInfo comment] body];
-            comment[1] = [[commentInfo user] userId];
-            comments[i] = comment;
-        }
-        NSArray* orderedComments = [[comments reverseObjectEnumerator] allObjects];
-        callback(@[[NSNull null], orderedComments]);
-    }];
-}
-
-RCT_EXPORT_METHOD(addComment:(NSString *)id :(NSString *)comment :(RCTResponseSenderBlock)callback) {
-    [RequestProvider addComment:comment forRequestId:id withCallback:^(ZDKComment *comment, NSError *error) {
-        callback(@[[NSNull null]]);
-    }];
-}
-
-RCT_EXPORT_METHOD(getArticle:(NSString *)article callback:(RCTResponseSenderBlock)callback) {
+RCT_REMAP_METHOD(getArticle,
+                 paramArticle:(NSString *)article
+                 articleResolver:(RCTPromiseResolveBlock)resolve
+                 articleRejecter:(RCTPromiseRejectBlock)reject)
+{
     [HCprovider getArticleWithId:article withCallback:^(NSArray *items, NSError *error) {
         NSString *title = [[items objectAtIndex:0] title];
         NSString *article_url = [[items objectAtIndex:0] htmlUrl];
         NSArray *articleData = [NSArray arrayWithObjects:title, article_url, nil];
-        
-        callback(@[[NSNull null], articleData]);
+
+        resolve(articleData);
     }];
 }
 
-RCT_EXPORT_METHOD(getSection:(NSString *)section callback:(RCTResponseSenderBlock)callback) {
+RCT_REMAP_METHOD(getSection,
+                  paramSection:(NSString *)section
+                  sectionResolver:(RCTPromiseResolveBlock)resolve
+                  sectionRejecter:(RCTPromiseRejectBlock)reject)
+{
     [HCprovider getArticlesWithSectionId:section withCallback:^(NSArray *items, NSError *error) {
         NSMutableArray* returnArticles = [[NSMutableArray alloc] init];
         for (int i = 0; i < [items count]; i++)
@@ -226,11 +194,15 @@ RCT_EXPORT_METHOD(getSection:(NSString *)section callback:(RCTResponseSenderBloc
             [returnArticles addObject: section];
         }
         NSArray *articleData = [returnArticles copy];
-        callback(@[[NSNull null], articleData]);
+        resolve(articleData);
     }];
 }
 
-RCT_EXPORT_METHOD(getCategory:(NSString *)category callback:(RCTResponseSenderBlock)callback) {
+RCT_REMAP_METHOD(getCategory,
+                 paramCategory:(NSString *)category
+                 catResolver:(RCTPromiseResolveBlock)resolve
+                 catRejecter:(RCTPromiseRejectBlock)reject)
+{
     [HCprovider getSectionsWithCategoryId:category withCallback:^(NSArray *items, NSError *error) {
         NSMutableArray* returnSections = [[NSMutableArray alloc] init];
         for (int i = 0; i < [items count]; i++)
@@ -241,7 +213,7 @@ RCT_EXPORT_METHOD(getCategory:(NSString *)category callback:(RCTResponseSenderBl
             [returnSections addObject: section];
         }
         NSArray *sectionData = [returnSections copy];
-        callback(@[[NSNull null], sectionData]);
+        resolve(sectionData);
     }];
 }
 

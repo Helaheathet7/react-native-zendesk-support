@@ -10,6 +10,7 @@ import android.os.Build;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -192,7 +193,7 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void createRequest(String ticketInfo, String subject, final Callback returnTicket) {
+  public void createRequest(String ticketInfo, String subject, final Promise promise) {
     CreateRequest ticket = new CreateRequest();
     List<String> tags = new ArrayList<>();
     tags.add("mobile");
@@ -210,97 +211,18 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
         WritableArray ticket = new WritableNativeArray();
         ticket.pushString(request.getId());
         ticket.pushString(request.getRequesterId().toString());
-        returnTicket.invoke(ticket);
+        promise.resolve(ticket);
       }
 
       @Override
       public void onError(ErrorResponse errorResponse) {
+        promise.reject(errorResponse.getReason());
       }
     });
   }
 
   @ReactMethod
-  public void getUsersTickets(final Callback returnTickets) {
-    requestProvider.getAllRequests(new ZendeskCallback<List<Request>>() {
-      @Override
-      public void onSuccess(List<Request> requests) {
-
-        WritableArray tickets = new WritableNativeArray();
-        for(Request request: requests) {
-          WritableArray ticket = new WritableNativeArray();
-          ticket.pushString(request.getId());
-          ticket.pushString(request.getSubject());
-          ticket.pushString(request.getLastComment().getBody());
-          ticket.pushString(request.getRequesterId().toString());
-          if(request.getLastCommentingAgents().isEmpty()){
-            ticket.pushString(null);
-          }
-          else {
-            ticket.pushString(request.getLastCommentingAgents().get(0).getName());
-          }
-          ticket.pushString(request.getCreatedAt().toString());
-          tickets.pushArray(ticket);
-        }
-        WritableArray error = new WritableNativeArray();
-        error.pushNull();
-        returnTickets.invoke(error, tickets);
-      }
-
-      @Override
-      public void onError(ErrorResponse errorResponse) {
-
-      }
-    });
-  }
-
-  @ReactMethod
-  public void getTicketComments( String ticketID ,final Callback returnTicket) {
-    requestProvider.getComments(ticketID, new ZendeskCallback<CommentsResponse>() {
-      @Override
-      public void onSuccess(CommentsResponse commentsResponse) {
-
-        WritableArray comments = new WritableNativeArray();
-        List<CommentResponse> commentsList = commentsResponse.getComments();
-
-        for(int i = commentsList.size() - 1; i >= 0; i--) {
-          CommentResponse comment = commentsList.get(i);
-          WritableArray ticketComment = new WritableNativeArray();
-          ticketComment.pushString(comment.getBody());
-          ticketComment.pushString(comment.getAuthorId().toString());
-          comments.pushArray(ticketComment);
-
-        }
-        Collections.reverse(Arrays.asList(comments));
-        WritableArray error = new WritableNativeArray();
-        error.pushNull();
-        returnTicket.invoke(error, comments);
-      }
-
-      @Override
-      public void onError(ErrorResponse errorResponse) {
-
-      }
-    });
-  }
-
-  @ReactMethod
-  public void addComment(String ticketID, String comment, final Callback respond) {
-    EndUserComment userComment = new EndUserComment();
-    userComment.setValue(comment);
-    requestProvider.addComment(ticketID, userComment, new ZendeskCallback<Comment>() {
-      @Override
-      public void onSuccess(Comment comment) {
-        respond.invoke();
-      }
-
-      @Override
-      public void onError(ErrorResponse errorResponse) {
-      }
-    });
-  }
-
-  @ReactMethod
-  public void getSection(String section, final Callback returnArticles) {
+  public void getSection(String section, final Promise promise) {
     HelpCenterProvider.getArticles(Long.valueOf(section), new ZendeskCallback<List<Article>>() {
       @Override
       public void onSuccess(List<Article> section) {
@@ -315,18 +237,18 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
         }
         WritableArray error = new WritableNativeArray();
         error.pushNull();
-        returnArticles.invoke(error, sectionData);
+        promise.resolve(sectionData);
       }
 
       @Override
       public void onError(ErrorResponse errorResponse) {
-        returnArticles.invoke();
+        promise.reject(errorResponse.getReason());
       }
     });
   }
 
   @ReactMethod
-  public void getCategory(String categoryID, final Callback returnArticles) {
+  public void getCategory(String categoryID, final Promise promise) {
     HelpCenterProvider.getSections(Long.valueOf(categoryID), new ZendeskCallback<List<Section>>() {
       @Override
       public void onSuccess(List<Section> sections) {
@@ -338,19 +260,19 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
           sectionNameAndID.pushString(section.getId().toString());
           sectionData.pushArray(sectionNameAndID);
         }
-        WritableArray error = new WritableNativeArray();
-        error.pushNull();
-        returnArticles.invoke(error, sectionData);
+
+        promise.resolve(sectionData);
       }
 
       @Override
       public void onError(ErrorResponse errorResponse) {
+        promise.resolve(errorResponse.getReason());
       }
     });
   }
 
   @ReactMethod
-  public void getArticle(String article, final Callback returnArticle) {
+  public void getArticle(String article, final Promise promise) {
     HelpCenterProvider.getArticle(Long.valueOf(article), new ZendeskCallback<Article>() {
       @Override
       public void onSuccess(Article article) {
@@ -358,15 +280,15 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
         WritableArray articleInfo = new WritableNativeArray();
         articleInfo.pushString(article.getTitle());
         articleInfo.pushString(article.getHtmlUrl());
-        WritableArray error = new WritableNativeArray();
-        error.pushNull();
-        returnArticle.invoke(error, articleInfo);
+
+        promise.resolve(articleInfo);
       }
 
       @Override
       public void onError(ErrorResponse errorResponse) {
-        returnArticle.invoke();
+        promise.reject(errorResponse.getReason());
       }
+
     });
   }
 
