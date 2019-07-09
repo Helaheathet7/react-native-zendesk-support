@@ -3,7 +3,7 @@ React Native bridge to Zendesk Support SDK on iOS and Android. This currently on
 
 ## React Native Version Support
 
-This has only been tested to work with React Native 0.47, probably works in earlier versions.
+This has been tested to work with React Native 59.9
 
 ## Getting started
 
