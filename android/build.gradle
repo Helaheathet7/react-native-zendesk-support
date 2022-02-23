@@ -1,3 +1,5 @@
+apply plugin: 'com.android.library'
+
 buildscript {
     ext {
         compileSdkVersion = 31
