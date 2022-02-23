@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zendesk:common-ui:1.0.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/12cf75dfd8be14cd31702109f0689801/transformed/jetified-common-ui-1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/12cf75dfd8be14cd31702109f0689801/transformed/jetified-common-ui-1.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/12cf75dfd8be14cd31702109f0689801/transformed/jetified-common-ui-1.0.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/common-ui/1.0.1/1e46b323b3b8d3c6cef09381658dcbeec2d19e3c/common-ui-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/common-ui/1.0.1/665374a7ef36b5a7eb33c9a48cb00840a5da6693/common-ui-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

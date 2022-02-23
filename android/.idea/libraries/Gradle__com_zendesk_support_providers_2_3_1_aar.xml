@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zendesk:support-providers:2.3.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bbced15e097c3376033fd18e039b56e8/transformed/jetified-support-providers-2.3.1/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fee805db3af7565202263a70d0b428ff/transformed/support-providers-2.3.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bbced15e097c3376033fd18e039b56e8/transformed/jetified-support-providers-2.3.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bbced15e097c3376033fd18e039b56e8/transformed/jetified-support-providers-2.3.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bbced15e097c3376033fd18e039b56e8/transformed/jetified-support-providers-2.3.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/support-providers/2.3.1/17a6b3ae460d70c650d8031aa8806533597ec37/support-providers-2.3.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/support-providers/2.3.1/813d02cf719fc23227b453dc0d98bc8538fc6a74/support-providers-2.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

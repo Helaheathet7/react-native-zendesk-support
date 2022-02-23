@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.sebchlan.picassocompat:picassocompat:1.2.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d79a91935a37e716235cf927252517ae/transformed/picassocompat-1.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e537995e87993da4d1c32bf00f26ed4e/transformed/jetified-picassocompat-1.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e537995e87993da4d1c32bf00f26ed4e/transformed/jetified-picassocompat-1.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e537995e87993da4d1c32bf00f26ed4e/transformed/jetified-picassocompat-1.2.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sebchlan.picassocompat/picassocompat/1.2.0/1077f813b3ffeb9ef112dddb9129b9899238f457/picassocompat-1.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sebchlan.picassocompat/picassocompat/1.2.0/cfb3b51e38d0fe019663fd7f39fdd433c0349dc8/picassocompat-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
