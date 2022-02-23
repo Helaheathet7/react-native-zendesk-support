@@ -1,13 +1,24 @@
 apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
 
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 2
+        versionName "1.1"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+    }
+}
 buildscript {
     ext {
         compileSdkVersion = 31
         buildToolsVersion = "31.0.0"
         minSdkVersion = 21
         targetSdkVersion = 31
-        kotlinVersion = '1.6.0'
-        androidXCore = "1.6.0"
     }
     repositories {
         mavenCentral()
