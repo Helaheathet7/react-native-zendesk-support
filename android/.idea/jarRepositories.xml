@@ -56,5 +56,15 @@
       <option name="name" value="Google2" />
       <option name="url" value="https://maven.google.com" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven7" />
+      <option name="name" value="maven7" />
+      <option name="url" value="file:$PROJECT_DIR$/../node_modules/jsc-android/dist/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven6" />
+      <option name="name" value="maven6" />
+      <option name="url" value="file:$PROJECT_DIR$/../node_modules/react-native/android/" />
+    </remote-repository>
   </component>
 </project>

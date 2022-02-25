@@ -1,0 +1,95 @@
+# OSX
+#
+.DS_Store
+.tern-port
+
+# CocoaPods
+#
+Pods/
+
+# React-Native
+#
+*.hprof
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android/IJ
+#
+.gradle
+local.properties
+play-suitable.keystore
+play-suitable-staging.keystore
+
+.envrc
+
+# node.js
+#
+node_modules/
+npm-debug.log
+
+# BUCK
+buck-out/
+\.buckd/
+android/keystores/debug.keystore
+
+# jest
+coverage/
+
+# App
+#
+config.jse
+# config.js
+!build-*
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle
+
+.vscode/launch.json
+.vscode/.react/
+.env
+.env.bak
+.eslintcache
+
+# IDEA Project Files Ignored
+# Only include shared run configurations
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/tasks.xml
+.idea/libraries
+.idea/dataSources*
+.idea/artifacts
+.idea/modules/
+.idea/gradle.xml
+.idea/misc.xml
+.idea/inspectionProfiles/
+.idea/app-root.iml
+.idea/compiler.xml

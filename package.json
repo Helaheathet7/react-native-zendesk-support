@@ -5,7 +5,10 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/robertsheao/react-native-zendesk-support"
+    "url": "https://github.com/teamsuitable/react-native-zendesk-support"
+  },
+  "dependencies": {
+    "react-native": "0.67.2"
   },
   "keywords": [
     "zendesk",
@@ -16,6 +19,6 @@
     "android",
     "react-component"
   ],
-  "author": "robertsheao",
+  "author": "teamsuitable",
   "license": "MIT"
 }

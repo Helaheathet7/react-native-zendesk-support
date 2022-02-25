@@ -23,7 +23,7 @@ import com.zendesk.service.ZendeskCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import zendesk.commonui.UiConfig;
+import zendesk.configurations.Configuration;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.Zendesk;
 import zendesk.support.Article;
@@ -35,6 +35,7 @@ import zendesk.support.Section;
 import zendesk.support.Support;
 import zendesk.support.guide.ViewArticleActivity;
 import zendesk.support.request.RequestActivity;
+import zendesk.support.request.RequestConfiguration;
 import zendesk.support.requestlist.RequestListActivity;
 import zendesk.support.guide.HelpCenterActivity;
 
@@ -165,7 +166,7 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
 
     Activity activity = getCurrentActivity();
 
-    UiConfig requestActivityConfig = RequestActivity.builder()
+    Configuration requestActivityConfig = RequestActivity.builder()
             .withTags("mobile", Build.BRAND, "API" + String.valueOf(Build.VERSION.SDK_INT), Build.MODEL, "Android")
             .config();
 
