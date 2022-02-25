@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.os.Build;
 
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -22,19 +21,13 @@ import com.zendesk.service.ErrorResponse;
 import com.zendesk.service.ZendeskCallback;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import zendesk.commonui.UiConfig;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.Zendesk;
 import zendesk.support.Article;
-import zendesk.support.Comment;
-import zendesk.support.CommentResponse;
-import zendesk.support.CommentsResponse;
 import zendesk.support.CreateRequest;
-import zendesk.support.EndUserComment;
 import zendesk.support.HelpCenterProvider;
 import zendesk.support.Request;
 import zendesk.support.RequestProvider;

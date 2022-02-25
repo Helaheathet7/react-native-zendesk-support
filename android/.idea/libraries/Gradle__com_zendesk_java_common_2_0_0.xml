@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zendesk:java-common:2.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/java-common/2.0.0/7cc9df15923bade1fa22c806d61687b0950aae14/java-common-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/java-common/2.0.0/9421670a57606e7511da80884004e35612d1cd6c/java-common-2.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/java-common/2.0.0/7e5fc394eb73b65971f24b5f9be31a32025abfe0/java-common-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

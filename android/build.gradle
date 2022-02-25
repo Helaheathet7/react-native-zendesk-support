@@ -30,9 +30,7 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation group: 'com.zendesk', name: 'support', version: '2.3.1'
-    implementation "com.android.tools.build:gradle:7.0.4"
-    implementation 'com.google.gms:google-services:4.3.3'
+    implementation group: 'com.zendesk', name: 'support', version: '5.0.8'
 }
 
 buildscript {
@@ -58,8 +56,6 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.facebook.react:react-native:+'
-        classpath group: 'com.zendesk', name: 'support', version: '2.3.1'
         classpath("com.android.tools.build:gradle:7.0.4")
         classpath('com.google.gms:google-services:4.3.3')
     }
