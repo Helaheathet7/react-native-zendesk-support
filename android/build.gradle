@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.facebook.react:react-native:0.67.2" // From node_modules
+    implementation "com.facebook.react:react-native:0.69.5" // From node_modules
     implementation "org.webkit:android-jsc:+"
     implementation group: 'com.zendesk', name: 'support', version: '5.0.8'
 }
