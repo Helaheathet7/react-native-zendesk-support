@@ -8,7 +8,7 @@
     "url": "https://github.com/teamsuitable/react-native-zendesk-support"
   },
   "dependencies": {
-    "react-native": "0.69.5"
+    "react-native": "0.70.1"
   },
   "keywords": [
     "zendesk",
