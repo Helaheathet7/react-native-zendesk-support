@@ -1,6 +1,6 @@
 {
   "name": "react-native-zendesk-support",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "React Native Wrapper around Zendesk Support",
   "main": "index.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/teamsuitable/react-native-zendesk-support"
   },
   "dependencies": {
-    "react-native": "0.70.1"
+    "react-native": "0.70.6"
   },
   "keywords": [
     "zendesk",
